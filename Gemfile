@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'active_model_serializers', '~> 0.9.3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
