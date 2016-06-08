@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608012458) do
+ActiveRecord::Schema.define(version: 20160608032453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "todo_items", force: :cascade do |t|
+    t.string   "desc",                         null: false
+    t.integer  "priority"
+    t.date     "due_date"
+    t.boolean  "completed",    default: false, null: false
+    t.integer  "todo_list_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id", using: :btree
+  end
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_todo_lists_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,4 +51,6 @@ ActiveRecord::Schema.define(version: 20160608012458) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "todo_items", "todo_lists"
+  add_foreign_key "todo_lists", "users"
 end
