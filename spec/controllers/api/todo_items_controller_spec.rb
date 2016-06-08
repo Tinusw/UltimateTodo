@@ -5,9 +5,9 @@ describe Api::TodoItemsController do
   describe "#index" do 
     context "for user that has a todo list with some todos" do 
       let(:todo_list) { create(:todo_list, :with_todo_items) }
-      let(:todo1) { todo_list.todo_item[0] }
-      let(:todo2) { todo_list.todo_item[1] }
-      let(:user) { todo_list.owner }
+      let(:todo1) { todo_list.todo_items[0] }
+      let(:todo2) { todo_list.todo_items[1] }
+      let(:user) { todo_list.user }
 
       before do 
         sign_in(user)
