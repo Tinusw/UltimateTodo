@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do 
+  context "for new valid user" do 
+    let(:user) { create(:user) }
+
+    it "Should have an associated todo list" do
+      user.todo_list.should be_a(TodoList)
+    end
+  end
 end

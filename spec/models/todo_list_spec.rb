@@ -1,5 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe TodoList, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe TodoList do 
+  it "should raise validation error when owner isn't provided" do 
+    expect {
+      create(:todo_list, owner:nil)
+    }.to raise_error(ActiveRecord::RecordInvalid)
+  end
+
+  context "for new valid task list" do 
+    let(:todo_list) { create(:todo_list) }
+
+    it "should have an empty list of tasks" do
+      todo_list.todos.shoud == []
+    end
+  end
 end
