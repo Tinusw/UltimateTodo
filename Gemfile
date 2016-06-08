@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rails_12factor'
+  gem 'rspec-rails'
 end
 
 group :development do
