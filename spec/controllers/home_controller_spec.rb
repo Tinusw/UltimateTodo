@@ -1,12 +1,20 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe HomeController, :type => :controller do
+describe HomeController do 
+  let(:user) { create(:user) }
 
-  describe "GET index" do
-    it "returns http success" do
+  describe "#index" do 
+    it "should render when user is not signed in" do 
       get :index
-      expect(response).to have_http_status(:success)
+      response.should be_ok
+      response.should render_template('index')
+    end
+
+    it "shoudld redirect to the user's todo list if signed in" do 
+      sign_in(user)
+      get :index
+      response.should redirect_to(todo_list_path(id: user.todo_list))
     end
   end
-
 end

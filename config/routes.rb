@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
 
+  resources :todo_lists, only: [:show]
+
   # routes for API
   namespace :api, defaults: {format: :json} do
     resources :todo_lists, only: [:index] do 
