@@ -64,6 +64,22 @@ describe Api::TodoItemsController do
         response.should be_success
       end
     end
+     
+    # Test not 100% successful 
+    describe "#destroy" do 
+      let(:delete_destroy) do 
+        delete :destroy, todo_list_id: todo_list, id: todo1.id
+      end
 
+      it "Should remove the task from the DB" do 
+        delete_destroy
+        expect{ todo1.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "should return 200 OK" do 
+        delete_destroy
+        response.should be_success
+      end
+    end
   end
 end

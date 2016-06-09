@@ -13,6 +13,11 @@ class Api::TodoItemsController < ApplicationController
     render nothing: true
   end
 
+  def destroy
+    todo_list.todo_items.destroy
+    render nothing: true
+  end
+
   private
 
   def todo_list
