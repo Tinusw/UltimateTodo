@@ -1,12 +1,12 @@
-<div ng-app = "todoApp" ng-controller="todoListController" ng-init="init(#{@todo_list.id})")>
-  <div class="form" ng-submit="addTodo()">
-    <input type="text" ng-model="todoDesc">
+<div ng-app="todoApp" ng-controller="TodoListController" ng-init="init(#{@todo_list.id})">
+  <div class="form" ng-submit="addTodo_item()">
+    <input type="text" ng-model="todo_itemDesc">
     <input type="submit" class="btn btn-primary" value="add">
-  </div>
-
+  </div> 
   <ul>
     <li ng-repeat="todo_item in todo_items">
       {{todo_item.desc}}
     </li>
   </ul>
+
 </div>
