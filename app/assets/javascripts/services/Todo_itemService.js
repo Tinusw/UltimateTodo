@@ -1,16 +1,25 @@
 angular.module('todoApp').factory('Todo_item', function($resource) {
   var Todo_item;
-  return Todo_item = (function(){
+  return Todo_item = (function() {
     function Todo_item(todoListId) {
-      this.services = $resource('/api/todo_lists:todo_list_id/todo_items', {
-        todo_list_id: todoListId
+      this.services = $resource('/api/todo_lists:todo_list_id/todo_items/:id', {
+        todo_list_id: todoListId,
+        id: '@id'
+      }, {
+        update: {
+          method: 'PATCH'
+        }
       });
     }
 
     Todo_item.prototype.create = function(attrs) {
-      var todo_item;
-      todo_item = new this.service(attrs);
-      return todo_item.$save();
+      return new this.service().$save(attrs);
+    };
+
+    Todo_item.prototype.update = function(todo_item, attrs) {
+      return new this.service({
+        id: todo_item.id
+      }).$update(attrs);
     };
 
     Todo_item.prototype.all = function() {

@@ -1,4 +1,4 @@
-<div ng-app="todoApp" ng-controller="TodoListController" ng-init="init(#{@todo_list.id})")>
+<div ng-app="todoApp" ng-controller="TodoListController" ng-init="init()")>
   <div class="form" id="new_task" ng-submit="addTodo_item()">
     <div class="input-group">
       <input class="form-control input-lg" type="text" autofocus="autofocus" placeholder="Todo Description" ng-model="todo_itemDesc">
@@ -9,8 +9,11 @@
         </div>
     </div>
   <ul class="list-group">
-    <li clas= "list-group-item" ng-repeat="todo_item in todo_items">
-      {{todo_item.desc}}
+    <li clas= "list-group-item" ng-repeat="todo_item in todo_items" ng-class="{completed: todo_item.completed}">
+      <input type="checkbox" ng-model="todo_item.completed" ng-change="toggleTodo_item(todo_item)">
+      <div class="span task-desc">        
+        {{todo_item.desc}}
+      </div>
     </li>
   </ul>
 </div>
