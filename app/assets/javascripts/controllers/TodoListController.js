@@ -8,7 +8,8 @@ angular.module('todoApp').controller("TodoListController", function($scope, Todo
     todo_item = {
       desc: $scope.todo_itemDesc
     };
-    $scope.todo_items.push(todo_item);
-    return this.todo_itemService.create(todo_item);
+    $scope.todo_items.unshift(todo_item);
+    this.todo_itemService.create(todo_item);
+    return $scope.todo_itemDesc = "";
   };
 });
