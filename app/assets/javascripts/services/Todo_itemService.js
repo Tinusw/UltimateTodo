@@ -6,22 +6,12 @@ angular.module('todoApp').factory('Todo_item', function($resource) {
       this.services = $resource('/api/todo_lists:todo_list_id/todo_items/:id', {
         todo_list_id: todoListId,
         id: '@id'
-      }, {
-        update: {
-          method: 'PATCH'
-        }
+      }
       });
     }
 
     Todo_item.prototype.create = function(attrs) {
       return new this.service().$save(attrs);
-      console.log("create called");
-    };
-
-    Todo_item.prototype.update = function(todo_item, attrs) {
-      return new this.service({
-        id: todo_item.id
-      }).$update(attrs);
     };
 
     Todo_item.prototype.all = function() {
