@@ -6,9 +6,9 @@ angular.module('todoApp').factory('Todo_item', function($resource) {
       this.services = $resource('/api/todo_lists:todo_list_id/todo_items/:id', {
         todo_list_id: todoListId,
         id: '@id'
-      }
       });
-    }
+      };
+    });
 
     Todo_item.prototype.create = function(attrs) {
       return new this.service().$save(attrs);
@@ -20,4 +20,4 @@ angular.module('todoApp').factory('Todo_item', function($resource) {
 
     return Todo_item;
   })();
-});
+};
