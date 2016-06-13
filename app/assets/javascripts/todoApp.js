@@ -12,11 +12,16 @@ app.controller('TodoListCtrl', ['$scope', function ($scope){
     {id: 2, title: "oil baby"},
     {id: 3, title: "yoogoo"}
   ];
-
+  
+  // Add to list
   $scope.addTodo = function(){
     $scope.newTodo.id = ($scope.todos.length) + 1;
     $scope.todos.push($scope.newTodo);
     $scope.newTodo = '';
+  }
+
+  $scope.deleteTodo = function(todo){
+    $scope.todos.splice($scope.todos.indexOf(todo),1);
   }
 }]);
 

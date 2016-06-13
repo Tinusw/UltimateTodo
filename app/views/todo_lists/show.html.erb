@@ -10,6 +10,10 @@
       <div>
         {{todo.id}}
         {{todo.title}}
+        <td>
+          <button class="btn btn-danger btn-lg" ng-click="deleteTodo(todo)">
+           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </td>
       </div>
     </div>
   </div>
