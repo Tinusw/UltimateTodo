@@ -1,4 +1,6 @@
 class Api::TodoItemsController < ApplicationController
+  skip_before_action :verify_authenticity_token, if: :json_request?
+  
   def index
     render json: todo_list.todo_items
   end
