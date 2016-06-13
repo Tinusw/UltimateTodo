@@ -20,26 +20,18 @@ app.controller('TodoListCtrl', ['$scope', 'models', function ($scope, models){
   $scope.todo_lists = models.todo_lists.query();
 
   // Add to list
-  $scope.addTodo = function(){
-    $scope.newTodo.id = ($scope.todos.length) + 1;
-    newTodo = models.todo_items.get({id: todo_list.id});
-    $scope.newTodo.push(newTodo)
-    $scope.newTodo = '';
-  }
+  // $scope.addTodo = function(){
+  //   $scope.newTodo.id = ($scope.todos.length) + 1;
+  //   newTodo = models.todo_items.get({id: todo_list.id});
+  //   $scope.newTodo.push(newTodo)
+  //   $scope.newTodo = '';
+  // }
 
-  $scope.deleteTodo = function(todo){
-    $scope.todos.splice($scope.todos.indexOf(todo),1);
-  }
+  // $scope.deleteTodo = function(todo){
+  //   $scope.todos.splice($scope.todos.indexOf(todo),1);
+  // }
 }]);
 
 
-
-// csrf token config
-
-// app.config(function($httpProvider) {
-//   var authToken;
-//   authToken = $("meta[name=\"csrf-token\"]").attr("content");
-//   return $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
-// });
 
 
