@@ -14,7 +14,9 @@ app.controller('TodoListCtrl', ['$scope', function ($scope){
   ];
 
   $scope.addTodo = function(){
+    $scope.newTodo.id = ($scope.todos.length) + 1;
     $scope.todos.push($scope.newTodo);
+    $scope.newTodo = '';
   }
 }]);
 

@@ -1,24 +1,22 @@
 <div ng-app= "todoApp" ng-controller="TodoListCtrl">
+  <form class="input-group" ng-submit="addTodo()">
+      <input class="form-control input-lg" autofocus="autofucs" type="text" placeholder="describe todo" ng-model="newTodo.title">
+      <div class="span input-group-btn">
+        <input type="submit" value="+" class="btn btn-success btn-lg">
+      </div>
+  </form>
+
   <div ng-repeat="todo in todos">
       <div>
         {{todo.id}}
         {{todo.title}}
       </div>
     </div>
-
-    <form class="form-inline" ng-submit="addTodo()">
-      <input value="{{todos[todos.length -1].id + 1}}" ng-model="newTodo.id">
-      <input type="text" placeholder="describe todo" ng-model="newTodo.title">
-
-      <input type="submit" value="+" class="btn btn-success">
-    </form>
-    
-    
   </div>
 </div>
 
 <!-- <div ng-app="todoApp" ng-controller="TodoListController">
-  <div class="form" id="new_task" ng-submit="addTodo_item()">
+  <div class="form-inline" ng-submit="addTodo()">
     
   <ul class="list-group">
     <li clas= "list-group-item" ng-repeat="todo in todos">
@@ -31,8 +29,7 @@
   </ul>
 </div> -->
 
-<!-- <div class="input-group" ng-submit="addTodo()">
-      <input type="hidden" value="{{todos[todos.length - 1].id + 1 }}" ng-model="newTodo.id">  
+<!-- <div class="input-group" ng-submit="addTodo()">  
       <input class="form-control input-lg" type="text" autofocus="autofocus" placeholder="Todo Description" ng-model="newTodo.title">
         <div class="span input-group-btn" type="submit">
           <button class="btn btn-primary btn-lg" type="submit" value="+">
