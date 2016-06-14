@@ -1,3 +1,43 @@
-<p>
-  List
-</p>
+<div ng-app= "todoApp" ng-controller="TodoListCtrl">
+  <form class="input-group" ng-submit="addTodo()">
+      <input class="form-control input-lg" autofocus="autofucs" type="text" placeholder="describe todo" ng-model="newTodo.title">
+      <div class="span input-group-btn">
+        <input type="submit" value="+" class="btn btn-success btn-lg">
+      </div>
+  </form>
+
+  <div ng-repeat="todo in todos">
+      <div>
+        {{todo.id}}
+        {{todo.title}}
+        <td>
+          <button class="btn btn-danger btn-lg" ng-click="deleteTodo(todo)">
+           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </td>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div ng-app="todoApp" ng-controller="TodoListController">
+  <div class="form-inline" ng-submit="addTodo()">
+    
+  <ul class="list-group">
+    <li clas= "list-group-item" ng-repeat="todo in todos">
+      <input type="checkbox" ng-model="todo_item.completed" ng-change="toggleTodo_item(todo_item)">
+      <div class="span task-desc">  
+        {{todo_list.title}}      
+        {{todo_item.desc}}
+      </div>
+    </li>
+  </ul>
+</div> -->
+
+<!-- <div class="input-group" ng-submit="addTodo()">  
+      <input class="form-control input-lg" type="text" autofocus="autofocus" placeholder="Todo Description" ng-model="newTodo.title">
+        <div class="span input-group-btn" type="submit">
+          <button class="btn btn-primary btn-lg" type="submit" value="+">
+            Add
+          </button>
+        </div>
+    </div> -->

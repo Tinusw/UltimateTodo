@@ -1,4 +1,5 @@
 class Api::TodoItemsController < ApplicationController
+  
   def index
     render json: todo_list.todo_items
   end
